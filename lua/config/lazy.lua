@@ -10,6 +10,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   -- Theme
   { "xero/miasma.nvim", priority = 2000, lazy=false, config=function() vim.cmd("colorscheme miasma") end }, 
+  {"folke/tokyonight.nvim", lazy = false, priority = 1000,opts = {},},
   -- LSP
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason.nvim" },
@@ -75,5 +76,13 @@ require("lazy").setup({
     keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find Buffers" })
     keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Find Help" })
   end
+    },
+    -- Jupyter Extension for NeoVim (Molten)
+    {"benlubas/molten-nvim",
+        version = "^1.0.0",
+        build = ":UpdateRemotePlugins",
+        init = function()
+            vim.g.molten_output_win_max_height = 20 
+        end,
     },
 })
