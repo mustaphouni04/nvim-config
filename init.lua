@@ -1,7 +1,10 @@
+local on_attach = require("config.on_attach").on_attach
 require("config.lazy") 
 require("config.theme")
 -- require("config.treesitter")
-require("config.lsp")
+require("config.lsp").setup_all(on_attach)
+
+
 require("config.cmp")
 require("config.settings")
 require("config.keymaps")

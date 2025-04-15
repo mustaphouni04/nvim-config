@@ -29,9 +29,10 @@ require("lazy").setup({
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "lua", "python", "rust", "cpp", "javascript" }, -- Install these parsers
+      ensure_installed = { "lua", "python", "rust", "cpp", "javascript", "bash", "json", "markdown", "yaml", "vim" }, -- Install these parsers
       auto_install = true, -- Automatically install missing parsers
-      highlight = { enable = true }, -- Enable syntax highlighting
+      highlight = { enable = true,
+                    additional_vim_regex_highlighting = false,}, -- Enable syntax highlighting
       indent = { enable = true }, -- Enable indentation
     })
   end
