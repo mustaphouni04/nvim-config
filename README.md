@@ -1,2 +1,2 @@
 # nvim-config
-Here's my neovim config, minimal setup with LSP, Treesitter and Telescope (and miasma colorscheme)
+Here's my neovim config, minimal setup with LSP, Treesitter and Telescope
