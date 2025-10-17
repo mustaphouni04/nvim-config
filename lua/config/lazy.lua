@@ -37,6 +37,27 @@ require("lazy").setup({
     })
   end
 },
+  {
+  "akinsho/bufferline.nvim",
+  version = "*", -- latest stable
+  dependencies = "nvim-tree/nvim-web-devicons",
+  config = function()
+    require("bufferline").setup {
+      options = {
+        numbers = "ordinal",
+        close_command = "bdelete! %d",       -- close buffer
+        right_mouse_command = "bdelete! %d",
+        left_trunc_marker = "",
+        right_trunc_marker = "",
+        separator_style = "slant",
+        show_buffer_close_icons = true,
+        show_close_icon = false,
+        enforce_regular_tabs = true,
+        always_show_bufferline = true,
+      }
+    }
+  end
+},
   -- Status Line
   { "nvim-lualine/lualine.nvim" },
 
@@ -60,6 +81,21 @@ require("lazy").setup({
     end
 
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+  end
+    },
+
+    {
+  "ray-x/lsp_signature.nvim",
+  config = function()
+    require("lsp_signature").setup({
+      bind = true,              -- automatically bind to LSP
+      floating_window = true,   -- show docs in a floating window
+      hint_enable = true,       -- show parameter hints
+      hint_prefix = " ",       -- nice icon
+      hint_scheme = "String",
+      timer_interval = 200,     -- ms to wait before showing hint
+      toggle_key = nil,         -- optional key to toggle hints
+    })
   end
     },
   -- Telescope (Fuzzy Finder)
