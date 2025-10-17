@@ -32,3 +32,15 @@ keymap("n", "<leader>v", ":vsplit ", { desc = "Vertical split file" })
 
 vim.keymap.set("n", "X", ":wa! | qa!<CR>", { desc = "Force write all and quit" })
 
+
+vim.keymap.set("n", "<C-_>", function()
+  local line = vim.api.nvim_get_current_line()
+  if line:match("^%s*#") then
+    -- remove leading #
+    line = line:gsub("^(%s*)#", "%1")
+  else
+    -- add #
+    line = "#" .. line
+  end
+  vim.api.nvim_set_current_line(line)
+end, { desc = "Toggle # comment on line" })
