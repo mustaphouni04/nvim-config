@@ -1,2 +1,2 @@
 # nvim-config
-Here's my neovim config, minimal setup with LSP, Treesitter and Telescope
+Neovim config, LSP, Treesitter and Telescope, also bufferline and other basic functionality for a functional IDE.
