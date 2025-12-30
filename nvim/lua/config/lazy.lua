@@ -9,7 +9,29 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- Theme
-  { "xero/miasma.nvim", priority = 2000, lazy=false, config=function() vim.cmd("colorscheme miasma") end }, 
+    {
+        "rebelot/kanagawa.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("kanagawa").setup({
+                theme = "dragon",
+                transparent = false,
+                dimInactive = true,
+                colors = {
+                    theme = {
+                        all = {
+                            ui = {
+                                bg_gutter = "none",
+                            },
+                        },
+                    },
+                },
+            })
+            vim.cmd("colorscheme kanagawa-dragon")
+        end,
+    },
+
   {"folke/tokyonight.nvim", lazy = false, priority = 1000,opts = {},},
   -- LSP
   { "neovim/nvim-lspconfig" },
@@ -22,6 +44,12 @@ require("lazy").setup({
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-path" },
   { "L3MON4D3/LuaSnip" },
+
+  -- Recent files and suggestions
+  {
+  "echasnovski/mini.starter",
+  version = false,
+  },
 
   -- Treesitter
   {
@@ -61,26 +89,43 @@ require("lazy").setup({
   -- Status Line
   { "nvim-lualine/lualine.nvim" },
 
+
+  -- ToggleTerm
+  {
+  "akinsho/toggleterm.nvim",
+  version = "*",
+  config = function()
+    require("toggleterm").setup({
+      open_mapping = [[<leader>t]],
+      direction = "float",
+      close_on_exit = true,
+      shade_terminals = true,
+    })
+  end,
+   },
+
   -- File Explorer
     {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("nvim-tree").setup({
-      hijack_netrw = true,    -- Replaces netrw for better file navigation
+      hijack_netrw = true,
+       hijack_directories =  {
+        enable = false,
+        auto_open = false,
+        },
       update_cwd = true,      -- Keep tree in sync with the current directory
       view = {
         width = 35,           -- Adjust the width of the file tree
         side = "left",        -- Position tree on the left
-      }
+      },
     })
 
-    -- Automatically open Nvim Tree when starting Neovim
     local function open_nvim_tree()
       require("nvim-tree.api").tree.open()
     end
 
-    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
   end
     },
 
