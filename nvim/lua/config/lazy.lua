@@ -5,6 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
     "https://github.com/folke/lazy.nvim.git", lazypath
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -96,11 +97,16 @@ require("lazy").setup({
   version = "*",
   config = function()
     require("toggleterm").setup({
-      open_mapping = [[<leader>t]],
       direction = "float",
       close_on_exit = true,
       shade_terminals = true,
     })
+    vim.keymap.set(
+      "n",
+      "<leader>t",
+      "<cmd>ToggleTerm<CR>",
+      { desc = "Toggle terminal" }
+    )
   end,
    },
 
