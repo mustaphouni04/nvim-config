@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="eastwood"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -109,7 +109,23 @@ alias gcmsg="git commit -m"
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias ga="git add ."
+alias ls="eza --git --icons"
+alias windows="cd ../../mnt/c/Users/musta/OneDrive/Escritorio/"
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mustapha/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mustapha/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mustapha/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mustapha/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 export PATH="$PATH:/opt/nvim/"
 
 export NVM_DIR="$HOME/.nvm"
@@ -151,7 +167,9 @@ rmvenv() {
   fi
 }
 
-nvm use 14
-neofetch --ascii_colors 152 244
-
+#nvm use 14
+#neofetch --ascii_colors 152 244
+nvm use 21
+alias edit="nvim ~/.zshrc"
+eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/kali.omp.json)"
 
