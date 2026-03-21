@@ -169,7 +169,8 @@ rmvenv() {
 
 #nvm use 14
 #neofetch --ascii_colors 152 244
-nvm use 21
+#nvm use 21
 alias edit="nvim ~/.zshrc"
 eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/kali.omp.json)"
 
+bindkey '^I' autosuggest-accept
