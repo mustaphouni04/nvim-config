@@ -8,14 +8,15 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-  experimental = {
-    ghost_text = {
-      hl_group = "CmpGhostText",
-    },
-  },
   mapping = cmp.mapping.preset.insert({
-    ["<Tab>"] = cmp.mapping.select_next_item(),
-    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    -- Navigate with arrow keys
+    ["<Up>"] = cmp.mapping.select_prev_item(),
+    ["<Down>"] = cmp.mapping.select_next_item(),
+
+    -- Tab to accept completion
+    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+
+    -- Enter to confirm
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
   }),
   sources = {
